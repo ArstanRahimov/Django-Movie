@@ -30,6 +30,8 @@ class AddReview(View):
         movie = Movie.objects.get(id=pk)
         if form.is_valid():
             form = form.save(commit=False)  # commit=False приостанавливает хранение формы, чтобы мы могли внести изменения в форму
+            if request.POST.get('parent', None):  # ключ parent это name="parent" в html
+                form.parent_id = int(request.POST.get('parent'))
             form.movie = movie
             form.save()  # теперь данные из формы будут сохранены в БД
         return redirect(movie.get_absolute_url())
