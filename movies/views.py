@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
 
-from .models import Movie
+from .models import Category, Movie
 from .forms import ReviewForm
 
 
@@ -20,7 +20,7 @@ class MovieDetailView(DetailView):
     model = Movie
     slug_field = 'url'  # отвечает за то, по какому полю нужно искать запись
 
-    # мы не указыаем template, так он автоматически добавляет к названию модели суффикс _detail и ищет template с таким названием (movie_detail.html)
+    # мы не указываем template, так он автоматически добавляет к названию модели суффикс _detail и ищет template с таким названием (movie_detail.html)
 
 
 class AddReview(View):
