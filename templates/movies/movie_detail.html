@@ -80,14 +80,18 @@
                         </span>
                     </li>
                     <li>
-                        <a href="#"><b>Рейтинг:</b>
-                            <span class="fa fa-star" aria-hidden="true" style="outline: none; cursor: inherit;"></span>
-                            <span class="fa fa-star" aria-hidden="true" style="outline: none; cursor: inherit;"></span>
-                            <span class="fa fa-star" aria-hidden="true" style="outline: none; cursor: inherit;"></span>
-                            <span class="fa fa-star" aria-hidden="true" style="outline: none; cursor: inherit;"></span>
-                            <span class="fa fa-star" aria-hidden="true" style="outline: none; cursor: inherit;"></span>
-                            <span class="editContent" style="outline: none; cursor: inherit;">5.0</span>
-                        </a>
+                        <form action="{% url 'add_rating' %}" method="post" name="rating">
+                        <b>Рейтинг:</b>
+                        {%csrf_token %}
+                        <input type="hidden" value="{{ movie.id }}" name="movie">
+                            <span class="rating">
+                                {% for key, value in star_form.fields.star.choices %}
+                                <input id="rating{{ value }}" type="radio" name="star" value="{{ key }}">
+                                <label for="rating{{ value }}">{{ key }}</label>
+                                {% endfor %}
+                            </span>
+                            <span class="editContent">4.0</span>
+                        </form>
                     </li>
                     <div class="share-desc">
                         <div class="share">
