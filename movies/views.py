@@ -31,6 +31,7 @@ class MoviesView(GenreYear, ListView):
 class MovieDetailView(GenreYear, DetailView):
     """Полное описание фильма"""
     model = Movie
+    queryset = Movie.objects.filter(draft=False)
     slug_field = 'url'  # отвечает за то, по какому полю нужно искать запись
 
     # мы не указываем template, так он автоматически добавляет к названию модели суффикс _detail и ищет template с таким названием (movie_detail.html)
@@ -38,6 +39,7 @@ class MovieDetailView(GenreYear, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['star_form'] = RatingForm()
+        context['form'] = ReviewForm()
         return context
 
 

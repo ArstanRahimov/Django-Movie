@@ -4,3 +4,4 @@ Pillow
 python-decouple
 django-ckeditor
 django-modeltranslation
+django-recaptcha3
