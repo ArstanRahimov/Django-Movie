@@ -22,6 +22,7 @@ class MoviesView(GenreYear, ListView):
     """Список фильмов"""
     model = Movie
     queryset =  Movie.objects.filter(draft=False)  # чтобы не выводились черновики
+    paginate_by = 2
 
     # template_name = 'movies/movies.html'
     # мы не указыаем template, так он автоматически добавляет к названию модели суффикс _list и ищет template с таким названием (movie_list.html)
@@ -63,10 +64,19 @@ class ActorView(GenreYear, DetailView):
 
 class FilterMoviesView(GenreYear, ListView):
     """Фильтрация фильмов"""
+    paginate_by = 2
+
     def get_queryset(self):
         queryset = Movie.objects.filter(Q(year__in=self.request.GET.getlist('year')) | Q(genres__in=self.request.GET.getlist('genre'))
-        )
+        ).distinct()
         return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['year'] = ''.join([f'year={x}&' for x in self.request.GET.getlist('year')])
+        context['genre'] = ''.join([f'genre={x}&' for x in self.request.GET.getlist('genre')])
+        return context
+
 
 
 class AddStarRating(View):
