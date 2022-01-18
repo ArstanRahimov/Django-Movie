@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from webbrowser import get
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,6 +33,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,6 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'django_movie.urls'
@@ -128,6 +132,18 @@ TIME_ZONE = 'Asia/Bishkek'
 USE_I18N = True
 
 USE_TZ = True
+
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('ru', gettext('Russia')),
+    ('en', gettext('English')),
+)
+
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 
 # Static files (CSS, JavaScript, Images)
@@ -215,8 +231,8 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-
-RECAPTCHA_PUBLIC_KEY = '6Lf6pRoeAAAAANAzsJ37JH3rEd48BdPcb_b6-Rzn'
+# https://www.google.com/recaptcha/admin/site/505062906/setup
+RECAPTCHA_PUBLIC_KEY = '6Lf6pRoeAAAAANAzsJ37JH3rEd48BdPcb_b6-Rzn'  
 RECAPTCHA_PRIVATE_KEY = '6Lf6pRoeAAAAAGcK9px1nAPkUaKnALCGPA2lwmL_'
 RECAPTCHA_DEFAULT_ACTION = 'generic'
 RECAPTCHA_SCORE_THRESHOLD = 0.5

@@ -2,6 +2,7 @@ from email.mime import message
 from django.utils.safestring import mark_safe
 from django.contrib import admin
 from django import forms
+from modeltranslation.admin import TranslationAdmin
 
 from .models import (Category, Genre, Movie, MovieShots,
                      Actor, Rating, RatingStar, Reviews)
@@ -10,7 +11,8 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class MovieAdminForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorUploadingWidget(), label='Описание')
+    description_ru = forms.CharField(widget=CKEditorUploadingWidget(), label='Описание')
+    description_en = forms.CharField(widget=CKEditorUploadingWidget(), label='Описание')
 
     class Meta:
         model = Movie
@@ -18,7 +20,7 @@ class MovieAdminForm(forms.ModelForm):
 
 
 @admin.register(Category)  # можно регистрировать в админке с помощью декоратора, указав в параметрах модель
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = ( 'id', 'name', 'url')  # позволяет в админке отображать колонки с названием, слагом и id
     list_display_links = ('name', )  # позволяет по нажатию на название категории переходить в детализацию
 
@@ -50,7 +52,7 @@ class MovieShotsInline(admin.StackedInline):
 
 
 @admin.register(Movie)
-class MovieAdmin(admin.ModelAdmin):
+class MovieAdmin(TranslationAdmin):
     list_display = ('title', 'category', 'url', 'draft')
     list_filter = ('category', 'year')  # фильтрация по категории
     search_fields = ('title', 'category__name', 'description')  # поиск
@@ -118,12 +120,12 @@ class MovieAdmin(admin.ModelAdmin):
 
 
 @admin.register(Genre)
-class GenreAdmin(admin.ModelAdmin):
+class GenreAdmin(TranslationAdmin):
     list_display = ('name', 'url')
 
 
 @admin.register(Actor)
-class ActorAdmin(admin.ModelAdmin):
+class ActorAdmin(TranslationAdmin):
     list_display = ('name', 'age', 'get_image')
     readonly_fields = ('get_image', )  # отображение изображения в деталях
 
@@ -140,7 +142,7 @@ class RatingAdmin(admin.ModelAdmin):
 
 
 @admin.register(MovieShots)
-class MovieShotsAdmin(admin.ModelAdmin):
+class MovieShotsAdmin(TranslationAdmin):
     list_display = ('title', 'movie', 'get_image')
 
     readonly_fields = ('get_image', )  # отображение изображения в деталях
