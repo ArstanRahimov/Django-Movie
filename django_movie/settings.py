@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+from telnetlib import AUTHENTICATION
 from webbrowser import get
 from decouple import config
 
@@ -49,6 +50,9 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 
     'snowpenguin.django.recaptcha3',
+
+    'allauth',
+    'allauth.account',
 
     'movies',
     'contact',
@@ -103,6 +107,12 @@ DATABASES = {
 }
 
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -132,6 +142,14 @@ TIME_ZONE = 'Asia/Bishkek'
 USE_I18N = True
 
 USE_TZ = True
+
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_REDIRECT_URL = '/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'  # dummy - код в консколь, smtp - на почту
 
 
 gettext = lambda s: s
