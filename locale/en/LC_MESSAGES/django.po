@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 14:17+0600\n"
+"POT-Creation-Date: 2022-01-18 14:39+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/movies/movie_detail.html:30
+#: templates/include/footer.html:53 templates/include/header.html:17
+#: templates/movies/movie_list.html:5
+msgid "Главная"
+msgstr "Main"
+
+#: templates/include/footer.html:56 templates/include/header.html:20
+#: templates/include/header.html:22
+msgid "Категории"
+msgstr "Categories"
+
+#: templates/include/footer.html:59
+msgid "Контакты"
+msgstr "Contacts"
+
+#: templates/include/header.html:32
+msgid "Вход"
+msgstr "Login"
+
+#: templates/include/header.html:61
+msgid "Все о кино"
+msgstr "All about cinema"
+
+#: templates/include/sidebar.html:5
+
+msgid "Поиск фильма"
+msgstr "Movie search"
+
+#: templates/include/sidebar.html:7
+msgid "Введите название..."
+msgstr "Enter the title..."
+
+#: templates/include/sidebar.html:14 templates/movies/movie_detail.html:58
+msgid "Жанры"
+msgstr "Genres"
+
+#: templates/include/sidebar.html:26 templates/movies/movie_detail.html:30
 msgid "Год"
 msgstr "Year"
+
+#: templates/include/sidebar.html:36
+msgid "Найти"
+msgstr "Search"
+
+#: templates/include/sidebar.html:41 templates/movies/movie_detail.html:84
+msgid "Рейтинг"
+msgstr "Raiting"
+
+#: templates/movies/actor.html:30
+msgid "Возраст"
+msgstr "Age"
+
+#: templates/movies/actor.html:31
+msgid "лет"
+msgstr "y.o."
+
+#: templates/movies/actor.html:33 templates/movies/movie_detail.html:42
+msgid "Режиссер"
+msgstr "Director"
+
+#: templates/movies/actor.html:40
+#, fuzzy
+#| msgid "Актеры"
+msgid "Актер"
+msgstr "Actors"
 
 #: templates/movies/movie_detail.html:33
 msgid "Страна"
@@ -30,17 +91,9 @@ msgstr "Country"
 msgid "Слоган"
 msgstr "Tagline"
 
-#: templates/movies/movie_detail.html:42
-msgid "Режиссер"
-msgstr "Director"
-
 #: templates/movies/movie_detail.html:51
 msgid "Актеры"
 msgstr "Actors"
-
-#: templates/movies/movie_detail.html:58
-msgid "Жанры"
-msgstr "Genres"
 
 #: templates/movies/movie_detail.html:64
 msgid "Премьера в мире"
@@ -57,10 +110,6 @@ msgstr "Fees in USA"
 #: templates/movies/movie_detail.html:78
 msgid "Сборы в мире"
 msgstr "Fees in world"
-
-#: templates/movies/movie_detail.html:84
-msgid "Рейтинг"
-msgstr "Raiting"
 
 #: templates/movies/movie_detail.html:128
 msgid "О фильме"
@@ -85,6 +134,10 @@ msgstr "Send"
 #: templates/movies/movie_detail.html:194
 msgid "Ответить"
 msgstr "Answer"
+
+#: templates/movies/tags/last_movies.html:3
+msgid "Последние добавленные"
+msgstr "Last added"
 
 #: venv/lib/python3.8/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:5
 msgid "Select an image to embed"

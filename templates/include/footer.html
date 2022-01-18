@@ -1,4 +1,5 @@
 {% load contact_tags %}
+{% load static i18n %}
 
 <footer class="editContent">
     <div class="container">
@@ -49,13 +50,13 @@
                         <h3 class="footer-title text-uppercase editContent mb-lg-4 mb-3">Разделы</h3>
                         <ul class="list-unstyled w3layouts-icons">
                             <li>
-                                <a href="index.html" class="editContent">Главная</a>
+                                <a href="index.html" class="editContent">{% trans 'Главная' %}</a>
                             </li>
                             <li>
-                                <a href="about.html" class="editContent">Категории</a>
+                                <a href="about.html" class="editContent">{% trans 'Категории' %}</a>
                             </li>
                             <li>
-                                <a href="contact.html" class="editContent">Контакты</a>
+                                <a href="contact.html" class="editContent">{% trans 'Контакты' %}</a>
                             </li>
                         </ul>
                     </div>
